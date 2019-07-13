@@ -102,4 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Specific local only
 pword.py
+python.json
