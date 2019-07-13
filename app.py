@@ -17,14 +17,21 @@ try:
 except:
     print("Error during authentication")
 
+def WhenFound(data):
+    try:
+        bot.retweet(data['id'])
+        bot.create_friendship(data['user']['id'])
+    except:
+        pass
 
 class MyListener(StreamListener):
  
     def on_data(self, data):
         try:
-            if json.loads(data)['']:
+            if not ("retweeted_status" in json.loads(data) or "quoted_status_id" in json.loads(data)):
                 with open('python.json', 'a') as f:
                     f.write(data[0:-1])
+                    WhenFound(json.loads(data))
                     return True
         except BaseException as e:
             print("Error on_data: %s" % str(e))
@@ -35,4 +42,4 @@ class MyListener(StreamListener):
         return True
 
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['Hi'])
+twitter_stream.filter(track=['Retweet to win OR retweet for OR retweet'])
