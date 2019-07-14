@@ -24,13 +24,13 @@ def WhenFound(data):
         pass
 
 class MyListener(StreamListener):
- 
+    
     def on_data(self, data):
         try:
             #print("trying ")
             if not ("retweeted_status" in json.loads(data) or "quoted_status_id" in json.loads(data)):
                 with open('python.json', 'a') as f:
-                    print("      win")
+                    print("      win ")
                     f.write(data[0:-1])
                     WhenFound(json.loads(data))
                     return True
@@ -43,4 +43,4 @@ class MyListener(StreamListener):
         return True
 
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['Retweet to win'])
+twitter_stream.filter(track=['Retweet to win','To Enter retweet','RT to win'])
