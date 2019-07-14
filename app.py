@@ -1,14 +1,29 @@
 import tweepy
 import json
-from datetime import datetime, date, time, timedelta
+from datetime import datetime
 from pword import ConsumerKey, ConsumerSecret, AccessToken, AccessTokenSecret
 from tweepy import Stream
 from tweepy.streaming import StreamListener
+
+
+"""
+  #####  ####### ######  #######     #####  #######    #    ######  #######
+ #     # #     # #     # #          #     #    #      # #   #     #    #
+ #       #     # #     # #          #          #     #   #  #     #    #
+ #       #     # #     # #####       #####     #    #     # ######     #
+ #       #     # #     # #                #    #    ####### #   #      #
+ #     # #     # #     # #          #     #    #    #     # #    #     #
+  #####  ####### ######  #######     #####     #    #     # #     #    #
+
+"""
+
+
 
 auth = tweepy.OAuthHandler(ConsumerKey, ConsumerSecret)
 auth.set_access_token(AccessToken, AccessTokenSecret)
 
 bot = tweepy.API(auth)
+
 
 try:
     bot.verify_credentials()
