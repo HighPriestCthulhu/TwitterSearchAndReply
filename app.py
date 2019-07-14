@@ -10,7 +10,6 @@ auth.set_access_token(AccessToken, AccessTokenSecret)
 
 bot = tweepy.API(auth)
 
-
 try:
     bot.verify_credentials()
     print("Authentication OK")
@@ -28,8 +27,10 @@ class MyListener(StreamListener):
  
     def on_data(self, data):
         try:
+            #print("trying ")
             if not ("retweeted_status" in json.loads(data) or "quoted_status_id" in json.loads(data)):
                 with open('python.json', 'a') as f:
+                    print("      win")
                     f.write(data[0:-1])
                     WhenFound(json.loads(data))
                     return True
@@ -42,4 +43,4 @@ class MyListener(StreamListener):
         return True
 
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['Retweet to win OR retweet for OR retweet'])
+twitter_stream.filter(track=['Retweet to win'])
