@@ -21,12 +21,6 @@ bot = tweepy.API(auth)
   #####  ####### ######  #######     #####     #    #     # #     #    #
 
 """
-
-
-
-
-
-
 try:
     bot.verify_credentials()
     print("Authentication OK")
@@ -42,7 +36,6 @@ except:
 .##..##..##.##.....##.##.......##...###....##.......##.....##.##.....##.##...###.##.....##
 ..###..###..##.....##.########.##....##....##........#######...#######..##....##.########.
 """
-
 def WhenFound(data):
     try:
         bot.retweet(data['id'])
@@ -76,9 +69,6 @@ class MyListener(StreamListener): #extends class
     def on_error(self, status):
         print(status)
         return True
-
-
-
 """
 ..######...#######..##.....##.##.....##....###....##....##.########...######.
 .##....##.##.....##.###...###.###...###...##.##...###...##.##.....##.##....##
@@ -89,4 +79,4 @@ class MyListener(StreamListener): #extends class
 ..######...#######..##.....##.##.....##.##.....##.##....##.########...######.
 """
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['Retweet to win','To Enter retweet','RT to win'])
+twitter_stream.filter(track=['Retweet to win','To Enter retweet','RT to win', 'Giving out free'])
