@@ -40,8 +40,10 @@ def WhenFound(data):
     try:
         bot.retweet(data['id'])
         bot.create_friendship(data['user']['id'])
+        bot.create_favorite(data['id'])
+        print(bot.rate_limit_status())
     except:
-        pass
+        print('fail at whenfound')
 
 """
 .##.......####..######..########.########.##....##.########.########.
@@ -79,4 +81,4 @@ class MyListener(StreamListener): #extends class
 ..######...#######..##.....##.##.....##.##.....##.##....##.########...######.
 """
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['Retweet to win','To Enter retweet','RT to win', 'Giving out free'])
+twitter_stream.filter(track=['Retweet to win','To Enter retweet','RT to win'])
